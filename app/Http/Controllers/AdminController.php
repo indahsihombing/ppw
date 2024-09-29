@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AdminController extends Controller
+{
+    function index(){
+        // echo "Admin Page";
+        // echo "<h1>". Auth::user()->name ."</h1>";
+        // echo "<a href='/logout'>Logout</a>";
+
+        ?>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -162,7 +177,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <script src="jss/index.js" defer></script>
+    <script src="js/index.js" defer></script>
     
 </body>
 </html>
+        <?php
+
+    }
+
+    function mahasiswa(){
+        // echo "Mahasiswa Page";
+        // echo "<h1>". Auth::user()->name ."</h1>";
+        // echo "<a href='/logout'>Logout</a>";
+        
+    }
+}

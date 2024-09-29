@@ -1,4 +1,49 @@
-.navbar {
+table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  margin-left: 21%; /* Menambahkan margin kiri auto untuk menggeser tabel ke kanan */
+  margin-right: 0;   /* Menghapus margin kanan */
+  margin-top: 70px;
+}
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .status-container {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .status-ditunda {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .status-sukses {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .status-diterima {
+    background-color: #00bcd4;
+    color: #fff;
+  }
+  
+  .status-ditolak {
+    background-color: #f44336;
+    color: #fff;
+  }
+  .navbar {
     background-color: #ffffff !important; /* Ubah warna background */
     color: #070707;
     padding: 15px 15px !important; /* Menambah padding yang lebih besar */
