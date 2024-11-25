@@ -1,0 +1,181 @@
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    margin-left: 21%; /* Menambahkan margin kiri auto untuk menggeser tabel ke kanan */
+    margin-right: 0; /* Menghapus margin kanan */
+    margin-top: 70px;
+  }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    .status-container {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .status-ditunda {
+      background-color: #ffc107;
+      color: #fff;
+    }
+    
+    .status-sukses {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    
+    .status-diterima {
+      background-color: #00bcd4;
+      color: #fff;
+    }
+    
+    .status-ditolak {
+      background-color: #f44336;
+      color: #fff;
+    }
+    
+  
+  body {
+      font-size: 1rem;
+      overflow-x: hidden;
+  }
+  
+  
+  
+  /* MAIN CONTENT */
+  .status-header {
+      margin-top: 90px; /* Jarak dari navbar untuk memastikan tidak tertutup */
+      font-size: 20px; /* Ukuran teks lebih besar sedikit */
+      font-weight: bold; /* Teks lebih tebal */
+      text-align: center; /* Posisikan teks di tengah */
+      margin-right: 580px;
+  }
+  
+  .status-header-kecil {
+      font-size: 13px; /* Ukuran teks lebih besar sedikit */
+      text-align: center; /* Posisikan teks di tengah */
+      margin-right: 650px;
+  }
+  
+  
+  
+  main {
+      padding-top: 120px; 
+  }
+  
+  .main-content {
+      padding-top: 100px; 
+  }
+  
+  table{
+      margin-top: 20px;
+  }
+  
+  form {
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  form label {
+      font-weight: bold;
+  }
+  
+  form .form-control, form .form-select {
+      margin-bottom: 10px;
+  }
+  .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin-right: 600px;
+  }
+  
+  .pagination a {
+      text-decoration: none;
+      color: #333;
+      padding: 8px 12px;
+      margin: 0 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+  }
+  
+  .pagination a:hover {
+      background-color: #e0e0e0;
+  }
+  
+  .pagination .active {
+      background-color: #ddd;
+      font-weight: bold;
+  }
+  
+  /* Panel Notifikasi */
+  .notif-panel {
+      display: none;
+      position: absolute;
+      top: 60px; /* Di bawah navbar */
+      right: 20px;
+      width: 350px;
+      background-color: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      z-index: 1000;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+  }
+  .notif-panel hr {
+      border: none; /* Menghilangkan border default */
+      border-top: 1px solid #ccc; /* Gaya garis */
+      margin: 10px 0; /* Jarak atas dan bawah */
+      width: 100%; /* Mengatur lebar penuh */
+  }
+  
+  .notif-header {
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+  }
+  
+  .notif-panel ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  .notif-panel ul li {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+  }
+  
+  .notif-panel ul li:last-child {
+      border-bottom: none;
+  }
+  
+  .show-more {
+      text-align: center;
+      display: block;
+      margin-top: 10px;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+  }
+  
+  .show-more:hover {
+      text-decoration: underline;
+  }

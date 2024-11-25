@@ -3,7 +3,7 @@ table {
   border-collapse: collapse;
   width: 75%;
   margin-left: 21%; /* Menambahkan margin kiri auto untuk menggeser tabel ke kanan */
-  margin-right: 0;   /* Menghapus margin kanan */
+  margin-right: 0; /* Menghapus margin kanan */
   margin-top: 70px;
 }
   td, th {
@@ -43,74 +43,41 @@ table {
     background-color: #f44336;
     color: #fff;
   }
-  .navbar {
-    background-color: #ffffff !important; /* Ubah warna background */
-    color: #070707;
-    padding: 15px 15px !important; /* Menambah padding yang lebih besar */
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.navbar-brand
-{
-    color: #070707 !important; /* Warna teks brand navbar menjadi hitam */
-    font-weight: bold;
-    border-radius: 50%;
-    
-
-
-}
-.navbar .nav-link {
-    color: #070707 !important; /* Warna teks link navbar menjadi hitam */
-    text-decoration: none !important ;/* Menghapus garis bawah (underline) */
-}
-
-.navbar .nav-link:hover {
-    text-decoration: none !important; /* Pastikan tidak ada garis bawah saat hover */
-}
-
+  
 body {
     font-size: 1rem;
     overflow-x: hidden;
 }
 
-.sidebar {
-    position: fixed;
-    top: 30px; /* Ubah nilai ini untuk menyesuaikan jarak dari navbar */
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 48px 0 0;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
-    background-color: #295F98 !important; /* Ubah warna background */
-
-}
-
-.sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-}
-
-.sidebar .nav-link:hover {
-    color: #007bff;
-}
-
-.sidebar .nav-link.active {
-    color: #007bff;
-    font-weight: bold;
-}
 
 /* MAIN CONTENT */
-
-
-.main-content {
-    padding-top: 20px;
+.status-header {
+    margin-top: 90px; /* Jarak dari navbar untuk memastikan tidak tertutup */
+    font-size: 20px; /* Ukuran teks lebih besar sedikit */
+    font-weight: bold; /* Teks lebih tebal */
+    text-align: center; /* Posisikan teks di tengah */
+    margin-right: 580px;
 }
+
+.status-header-kecil {
+    font-size: 13px; /* Ukuran teks lebih besar sedikit */
+    text-align: center; /* Posisikan teks di tengah */
+    margin-right: 650px;
+}
+
+
 
 main {
-    padding-top: 70px; /* Menyesuaikan dengan tinggi navbar */
-    margin-top: 30px !important
+    padding-top: 120px; 
 }
 
+.main-content {
+    padding-top: 100px; 
+}
+
+table{
+    margin-top: 20px;
+}
 
 form {
     background-color: #f7f7f7;
@@ -126,60 +93,59 @@ form label {
 form .form-control, form .form-select {
     margin-bottom: 10px;
 }
-
-/* Panel Notifikasi */
-.notif-panel {
-    display: none;
-    position: absolute;
-    top: 60px; /* Di bawah navbar */
-    right: 20px;
-    width: 350px;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    z-index: 1000;
-    padding: 15px;
-    font-family: Arial, sans-serif;
-}
-.notif-panel hr {
-    border: none; /* Menghilangkan border default */
-    border-top: 1px solid #ccc; /* Gaya garis */
-    margin: 10px 0; /* Jarak atas dan bawah */
-    width: 100%; /* Mengatur lebar penuh */
-}
-
-.notif-header {
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
-
-.notif-panel ul {
-    list-style: none;
-    padding: 0;
-}
-
-.notif-panel ul li {
-    padding: 10px 0;
+.pagination {
     display: flex;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 600px;
 }
 
-.notif-panel ul li:last-child {
-    border-bottom: none;
-}
-
-.show-more {
-    text-align: center;
-    display: block;
-    margin-top: 10px;
-    color: black;
-    font-weight: bold;
+.pagination a {
     text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
-.show-more:hover {
-    text-decoration: underline;
+.pagination a:hover {
+    background-color: #e0e0e0;
 }
+
+.pagination .active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+
+/* Style untuk panah kecil di samping status "Sukses" */
+.arrow {
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Style untuk kotak kecil "Beri Ulasan" */
+.review-box {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px;
+  position: absolute;
+  margin-top: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.review-box a {
+  text-decoration: none;
+  color: #00050a;
+  font-weight: bold;
+}
+
+
+

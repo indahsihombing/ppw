@@ -1,44 +1,11 @@
-/* Main Content Form */
-form label, 
-form .form-control, 
-form .form-select, 
-form button {
-    font-family: 'Poppins', sans-serif;
-    
-}
 
-/* Notifikasi */
-.notif-panel {
-    font-family: 'Poppins', sans-serif;
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
 }
 
 
-/* MAIN CONTENT */
-
-.main-content {
-    padding-top: 20px;
-}
-
-main {
-    padding-top: 50px; /* Menyesuaikan dengan tinggi navbar */
-    margin-top: 30px !important
-}
-
-
-form {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    font-weight: bold;
-}
-
-form .form-control, form .form-select {
-    margin-bottom: 10px;
-}
 
 /* Panel Notifikasi */
 .notif-panel {
@@ -98,3 +65,54 @@ form .form-control, form .form-select {
 }
 
 
+.accordion-button {
+    background-color: #f7f7f7;
+    border: none;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.accordion-button::before {
+    content: "\e75f";
+    font-family: 'Glyphicons Halflings';
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.accordion-button[aria-expanded="true"] {
+    background-color: #e6e6e6;
+}
+
+.accordion-button[aria-expanded="true"]::before {
+    content: "\e76a";
+}
+
+.accordion-body {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}

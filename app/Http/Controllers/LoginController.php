@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+
 class LoginController extends Controller
 {
-    function index()
+    function duktek()
+    {
+        return view('login');
+
+    }
+
+    function maintenance()
+    {
+        return view('login');
+
+    }
+
+    function user()
     {
         return view('login');
 
@@ -29,18 +42,20 @@ class LoginController extends Controller
         ];
         
         if(Auth::attempt($infologin)){
-            if(Auth::user()->role == 'admin'){
-                return redirect('/admin');
-            if(Auth::user()->role == 'mahasiswa'){
-                return redirect('/mahasiswa');
+            $user = Auth::user();
+            // dd(Auth::user()->role);
+            // Redirect based on user role
+            if ($user->role == 'duktek') {
+                return redirect()->route('duktek');
+            } elseif ($user->role == 'maintenance') {
+                return redirect()->route('maintenance');
+            } elseif ($user->role == 'user') {
+                return redirect()->route('user');
             }
-        }else{
+        } else {
             return redirect('')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
-
         }
-        
     }
-}
 
     function logout(){
         Auth::logout();

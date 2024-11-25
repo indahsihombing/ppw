@@ -87,14 +87,7 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="ditujukanKepada" class="form-label">Ditujukan Kepada</label>
-            <select class="form-select" id="ditujukanKepada" name="ditujukan_kepada" required>
-                <option selected>Pilih tujuan</option>
-                <option value="duktek">Duktek</option>
-                <option value="maintenance">Maintenance</option>
-            </select>
-        </div>
+
 
         <div class="mb-3">
             <label for="lokasiKerusakan" class="form-label">Lokasi Kerusakan</label>
@@ -105,6 +98,17 @@
             <label for="deskripsiKerusakan" class="form-label">Deskripsi Kerusakan</label>
             <textarea class="form-control" id="deskripsiKerusakan" name="deskripsi_kerusakan" rows="3" placeholder="Bagian ini harap isi dengan jelas dan detail bentuk kerusakan yang ditemukan."></textarea>
         </div>
+
+        <div class="mb-3">
+            <label for="ditujukanKepada" class="form-label">Ditujukan Kepada</label>
+            <select class="form-control" id="ditujukanKepada" name="ditujukan_kepada" required>
+                <option value="">Pilih tujuan laporan</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Duktek">Duktek</option>
+            </select>
+        </div>
+        
+        
 
         <div class="mb-3">
             <label for="fotoKerusakan" class="form-label">Unggah Foto Bukti Kerusakan</label>

@@ -35,10 +35,6 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                </div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
         </div>

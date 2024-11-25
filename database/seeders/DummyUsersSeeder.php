@@ -15,18 +15,30 @@ class DummyUsersSeeder extends Seeder
     {
         $userData = [
             [
-            'name'=> 'Admin',
-            'email'=>'admin@del.ac.id',
-            'role'=>'admin',
-            'password'=>bcrypt('admin'),
+            'name'=> 'Duktek',
+            'email'=>'duktek@del.ac.id',
+            'role'=>'duktek',
+            'password'=>bcrypt('duktek'),
             ],
-
+            [
+            'name'=> 'Maintenance',
+            'email'=>'maintenance@del.ac.id',
+            'role'=>'maintenance',
+            'password'=>bcrypt('main'),
+            ],
             [
             'name'=> 'Indah Elisa Sihombing',
             'email'=>'iss22041@del.ac.id',
-            'role'=>'mahasiswa',
-            'password'=>bcrypt('mahasiswa'),
+            'role'=>'user',
+            'password'=>bcrypt('22041'),
             ],
+            [
+            'name'=> 'Chandro Pardede',
+            'email'=>'chandro.pardede@del.ac.id',
+            'role'=>'user',
+            'password'=>bcrypt('dosen'),
+                ],
+
         ];
 
         foreach($userData as $key => $val){

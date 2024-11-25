@@ -1,0 +1,210 @@
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+
+/* Panel Notifikasi */
+.notif-panel {
+    display: none;
+    position: absolute;
+    top: 60px; /* Di bawah navbar */
+    right: 20px;
+    width: 350px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+.notif-panel hr {
+    border: none; /* Menghilangkan border default */
+    border-top: 1px solid #ccc; /* Gaya garis */
+    margin: 10px 0; /* Jarak atas dan bawah */
+    width: 100%; /* Mengatur lebar penuh */
+}
+
+.notif-header {
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.notif-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notif-panel ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.notif-panel ul li:last-child {
+    border-bottom: none;
+}
+
+.show-more {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.show-more:hover {
+    text-decoration: underline;
+}
+
+/* Styling for main content */
+.main-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-left: 250px; /* adjust based on sidebar width */
+    
+}
+.main-content {
+    padding-top: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    padding-top: 90px; /* Menyesuaikan dengan tinggi navbar */
+    margin-top: 30px !important
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.rating-group {
+    display: flex; /* Mengatur tampilan elemen radio button secara horizontal */
+    gap: 15px; /* Memberikan jarak antar elemen */
+    
+}
+
+.rating-group label {
+    display: inline-block; /* Memastikan label ditampilkan secara horizontal */
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background-color: #295F98;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #204873;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Popup Modal */
+#popupModal {
+    display: none; /* Pastikan popup tidak terlihat saat pertama kali dimuat */
+}
+
+
+/* Popup Modal */
+.popup {
+    display: none; /* Popup tidak terlihat secara default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex; /* Menggunakan flexbox untuk pusatkan konten */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px; /* Padding untuk ruang dalam */
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 300px; /* Lebar popup */
+    max-width: 90%; /* Agar responsive pada layar kecil */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Tambahkan shadow */
+}
+
+
+.checkmark {
+    color: green;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#closePopup {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#closePopup:hover {
+    background-color: #0056b3;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}

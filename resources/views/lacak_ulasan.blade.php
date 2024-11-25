@@ -6,7 +6,7 @@
     <title>Sidebar and Navbar Example</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/lacak_dm.css">
+    <link rel="stylesheet" href="css/lacak_ulasan.css">
     <link rel="stylesheet" href="css/sidebar_dm.css">
     <link rel="stylesheet" href="css/navbar_dm.css">
     @include('sidebar_dm')
@@ -59,35 +59,59 @@
 <!-- Main content -->
 
 
-<div class="container mt-5">
-  <h2>Lacak Kerusakan</h2>
-  
-  @if(session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
-  @endif
+<div class="status-header">
+    <h2>    LACAK STATUS</h2>
+</div>
 
-  <table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Deskripsi Kerusakan</th>
-            <th>Lokasi Kerusakan</th>
-            <th>Ditujukan Kepada</th> <!-- Kolom baru untuk Ditujukan Kepada -->
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($reports as $report)
-            <tr>
-                <td>{{ $report->deskripsi_kerusakan }}</td>
-                <td>{{ $report->lokasi_kerusakan }}</td>
-                <td>{{ $report->ditujukan_kepada }}</td> <!-- Data Ditujukan Kepada -->
-                <td>
-                    <a href="{{ route('duktek_form', ['id' => $report->id]) }}" class="btn btn-primary">Lihat Detail</a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
+    <div class="status-header-kecil">
+</p>Showing 1-5 of 10 items.</p>
+  </div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Deksripsi Kerusakan</th>
+    <th>Lokasi Kerusakan</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Kerusakan idea hub yang tidak dapat hidup</td>
+    <td>Gedung 711</td>
+    <td><button type="button" class="btn btn-secondary">Lihat Ulasan</button></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lampu saung tengah gedung 7 redup</td>
+    <td>Gedung 7</td>
+    <td><button type="button" class="btn btn-secondary">Lihat Ulasan</button></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>AC panas</td>
+    <td>Gedung 512</td>
+    <td><button type="button" class="btn btn-secondary">Lihat Ulasan</button></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Keran air kamar mandi rusak</td>
+    <td>Kamar 14 LT 3 Asrama Mamre</td>
+    <td><button type="button" class="btn btn-secondary">Lihat Ulasan</button></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Penyangga bunkbed atas nama yohana tidak ada</td>
+    <td>Kamar 14 LT 3 Asrama Mamre</td>
+    <td><button type="button" class="btn btn-secondary">Lihat Ulasan</button></td>
+  </tr>
 </table>
+
+<div class="pagination">
+    <a href="#" class="prev">&lt;&lt;</a>
+    <a href="#" class="page active">1</a>
+    <a href="#" class="page ">2</a>
+    <a href="#" class="next">&gt;&gt;</a>
+</div>
 
 </body>
 </html>
@@ -96,27 +120,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
     <script src="jss/index.js" defer></script>
-
-
-
-
-
-
-
-
-
-{{-- <!-- resources/views/lacak.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lacak Kerusakan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html> --}}
