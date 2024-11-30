@@ -207,3 +207,15 @@ body {
 .btn-primary:hover {
     background-color: #0056b3; /* Warna biru lebih gelap saat hover */
 }
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Tambahkan jarak antara elemen */
+}
+
+.user-name {
+  font-size: 16px;
+  color: #fff; /* Sesuaikan warna teks */
+  margin-left: 10px; /* Tambahkan jarak kiri untuk nama pengguna */
+}

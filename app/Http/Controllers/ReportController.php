@@ -148,7 +148,7 @@ public function accept($id)
 
     // Kirim notifikasi ke mahasiswa
     // Anda dapat menggunakan event dan listener atau langsung mengupdate session
-    return redirect()->back()->with('success', 'Laporan diterima.');
+    return redirect()->back()->with('success', 'Laporan berhasil diterima.');
 }
 
 public function reject(Request $request, $id)
@@ -159,7 +159,7 @@ public function reject(Request $request, $id)
     $report->save();
 
     // Kirim notifikasi ke mahasiswa
-    return redirect()->back()->with('success', 'Laporan ditolak.');
+    return redirect()->back()->with('success', 'Laporan berhasil ditolak.');
 }
 
 

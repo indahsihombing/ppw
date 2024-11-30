@@ -1,105 +1,7 @@
+/* Import font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-
-.sidebar {
-  background-color: #3575ba;
-  width: 250px;
-  padding: 20px;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar .menu a {
-  text-decoration: none;
-  color: inherit; /* Menggunakan warna teks yang diwariskan */
-}
-
-.logo {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.logo-image {
-  width: 180px; /* Adjust the size as needed */
-  height: auto;
-  display: block;
-  margin: 0 auto 10px; /* Center the image and add some space below */
-}
-
-.menu {
-  list-style: none;
-  padding: 0;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  color: #ffff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.menu-item:hover {
-  background-color: #c2c0c0;
-}
-
-.menu-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.dashboard-title {
-  font-size: 36px; /* Increase the size as needed */
-  font-weight: bold;
-  color: #333;
-  margin: 20px 0;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 20px;
-  position: relative; /* To control position of user-actions */
-}
-
-.user-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between avatar and logout button */
-}
-
-.user-avatar {
-  width: 40px; /* Ukuran ikon profil */
-  height: 40px;
-  border-radius: 50%; /* Membuat ikon menjadi lingkaran */
-}
-
-.logout-btn {
-background: #285a8f;
-border: none;
-color: #fff;
-padding: 8px 16px;
-border-radius: 15px;
-font-size: 16px;
-cursor: pointer;
-}
-
-.btn-logout:hover {
-  background-color: #285a8f; /* Darker shade of sidebar color */
-}
-
-
-/* Reset dasar dan pengaturan font */
+/* Reset dasar */
 * {
     margin: 0;
     padding: 0;
@@ -110,30 +12,11 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f9f9f9;
     color: #333;
-    line-height: 1.6;
-    padding: 20px 0;
-}
-
-/* Container utama */
-.container {
-    max-width: 800px; /* Membuat container lebih kecil dan lebih terpusat */
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Heading utama */
-h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 /* Card untuk setiap laporan */
 .card {
+    position: relative; /* Tambahkan untuk posisi tombol */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -142,50 +25,25 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efek hover pada card */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Row untuk setiap informasi laporan */
-.row {
-    margin-bottom: 20px;
+/* Tombol kecil di kanan bawah */
+.card .row.mb-3:last-of-type {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
-/* Styling untuk label dan informasi */
-.col-md-3 {
-    font-weight: 600;
-    color: #555;
-    flex-basis: 30%;
-    min-width: 150px; /* Pastikan label tetap pada ukuran kecil */
-}
-
-.col-md-9 {
-    color: #777;
-    flex-basis: 65%;
-    min-width: 250px; /* Memberikan ruang lebih banyak untuk detail informasi */
-    padding-left: 15px;
-}
-
-/* Styling untuk foto */
-img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
-/* Tombol Terima dan Tolak */
 button {
-    font-size: 1rem;
-    padding: 12px 20px;
-    border-radius: 8px;
+    font-size: 0.875rem; /* Ukuran font lebih kecil */
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    width: 100%; /* Tombol mengambil penuh lebar container */
-    margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -203,75 +61,71 @@ button[type="submit"].btn-success:hover {
 }
 
 /* Tombol Tolak */
-button[type="submit"].btn-danger {
+button[type="button"].btn-danger {
     background-color: #dc3545;
     border: none;
     color: white;
     font-weight: 600;
 }
 
-button[type="submit"].btn-danger:hover {
+button[type="button"].btn-danger:hover {
     background-color: #c82333;
     transform: scale(1.05);
 }
 
-/* Input alasan penolakan */
-.rejection-reason input {
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
-    border: 2px solid #ddd;
-    margin-top: 10px;
-    font-size: 1rem;
+/* Popup alasan penolakan */
+.popup-rejection {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
 }
 
-.rejection-reason input:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.rejection-reason textarea {
+.popup-rejection textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: vertical; /* Mengizinkan pengguna untuk mengubah ukuran vertikal */
+    resize: none;
+    font-size: 0.875rem;
 }
 
-.rejection-reason {
-    margin-top: 10px;
-}
-
-.btn-danger {
-    margin-top: 10px;
-}
-
-/* Form Action button (hidden until reason is shown) */
-.d-none {
-    display: none;
-}
-
-/* Gaya untuk tombol "Kirim Penolakan" */
-.btn-sm {
+.popup-rejection .btn-sm {
+    font-size: 0.75rem;
     padding: 5px 10px;
-    font-size: 12px;
     border-radius: 4px;
+    margin-top: 10px;
+    float: right; /* Tombol di pojok kanan bawah */
 }
 
-/* Styling untuk alert */
+/* Background overlay untuk popup */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
 .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }

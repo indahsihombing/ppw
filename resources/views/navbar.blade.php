@@ -23,6 +23,10 @@
                 <button type="submit" class="logout-btn">Keluar</button>
             </form>
             <i class="fa fa-user profile-icon"></i>
+            <!-- Tampilkan nama pengguna yang sedang login -->
+            @if(Auth::check())
+                <span class="user-name">{{ Auth::user()->name }}</span>
+            @endif
         </div>
     </div>
     <!-- Title Section within the Header for a seamless look -->

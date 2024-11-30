@@ -279,3 +279,27 @@ body {
     margin: 10px 0;
 }
 
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Tambahkan jarak antara elemen */
+}
+
+.user-name {
+    font-size: 16px;
+    color: #fff; /* Sesuaikan warna teks */
+    margin-left: 10px; /* Tambahkan jarak kiri untuk nama pengguna */
+}
+
+.no-underline {
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    color: inherit; /* Menggunakan warna teks yang diwariskan */
+    font-size: 18px;
+    color: #2f3c7e;
+    margin: 10px 0;
+    font-weight: bold; /* Membuat teks menjadi tebal */
+}
+
+.no-underline:hover {
+    text-decoration: underline; /* Menambahkan garis bawah saat hover jika diinginkan */
+}

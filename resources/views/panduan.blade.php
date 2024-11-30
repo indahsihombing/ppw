@@ -27,6 +27,10 @@
                 <button type="submit" class="logout-btn">Keluar</button>
             </form>
             <i class="fa fa-user profile-icon"></i>
+            <!-- Tampilkan nama pengguna yang sedang login -->
+            @if(Auth::check())
+                <span class="user-name">{{ Auth::user()->name }}</span>
+            @endif
         </div>
     </div>
     <!-- Title Section within the Header for a seamless look -->
@@ -36,10 +40,9 @@
 </header>
     
     <section class="featured-article">
-        <img src="featured-image.jpg" alt="Featured" class="featured-image">
+        <img src="img/laptop.jpg" alt="Featured" class="featured-image">
         <div class="featured-content">
-            <h2>Sudah Jadi Alumni Prakerja? Ayo Isi Survei dan Menangkan Hadiah Total 25 Juta Rupiah!</h2>
-            <p>Sobat Prakerja, 5 tahun sudah Prakerja berjalan. Sudah lebih dari 18,9 juta penerima dari 514 kabupaten/kota merasakan manfaat Prakerja. Menutup tahun ini,...</p>
+            <a href="{{ route('artikel_1') }}" class="no-underline">Tips Merawat Laptop Agar Tahan Lama!</a>            <p>Laptop adalah perangkat esensial bagi mahasiswa. Artikel ini membahas cara membersihkan layar dan keyboard, pentingnya menggunakan cooling pad, serta tips menjaga baterai agar tetap awet.</p>
             <span class="date">08 November 2024</span>
         </div>
     </section>
@@ -49,56 +52,56 @@
         <div class="article-cards">
             <!-- Article Card 1 -->
             <div class="article-card">
-                <img src="article-image1.jpg" alt="Article 1">
+                <img src="img/charger.jpg" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Prakerja Kembali Raih Apresiasi Kala Hadiri Mongolia Social Protection Forum</h4>
-                    <p>Mongolia, 29 Oktober 2024 – Prakerja kembali mendapatkan apresiasi dari mitra internasional...</p>
+                    <h4>Cara Mengatasi Kerusakan Charger Laptop: Kabel Putus Hingga Overheating</h4>
+                    <p>Kerusakan charger sering mengganggu aktivitas mahasiswa. Artikel ini menjelaskan penyebab umum kerusakan seperti kabel putus atau adaptor panas, dan bagaimana memperbaikinya dengan aman.</p>
                          <span class="date">01 November 2024</span>
                 </div>
             </div>
             <!-- Article Card 2 -->
             <div class="article-card">
-                <img src="article-image2.jpg" alt="Article 2">
+                <img src="img/speaker.jpg" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Panggilan untuk Alumni Prakerja: Survei Alumni Sudah Dibuka!</h4>
-                    <p>Sejak tahun 2020, Program Kartu Prakerja telah mendorong lebih dari 18,9 juta orang untuk meningkatkan keterampilannya...</p>
+                    <h4>Panduan Memperbaiki Speaker Rusak: Suara Pecah atau Tidak Menyala</h4>
+                    <p>Speaker laptop atau perangkat audio sering menjadi alat hiburan di asrama. Artikel ini membahas penyebab umum kerusakan dan langkah perbaikan sederhana yang dapat dilakukan mahasiswa.</p>
                     <span class="date">01 November 2024</span>
                 </div>
             </div>
             <!-- Article Card 3 -->
             <div class="article-card">
-                <img src="article-image3.jpg" alt="Article 3">
+                <img src="img/toilet.jpg" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Kumpul Jasa Pekanbaru Dimulai: Alumni Prakerja Berkontribusi bagi UMKM dan...</h4>
-                    <p>Hai, Sobat Prakerja! Setelah sukses dalam berbagai program pemberdayaan...</p>
+                    <h4>Mengatasi Toilet Mampet dan Flush Rusak di Fasilitas Kampus dan Asrama</h4>
+                    <p>Toilet mampet dan flush yang tidak berfungsi adalah masalah umum di kampus dan asrama. Artikel ini membahas cara sederhana mengatasi toilet tersumbat menggunakan alat seperti plunger, serta langkah memperbaiki sistem flush yang macet atau bocor. Juga disertakan tips pencegahan agar toilet tetap berfungsi optimal.</p>
                     <span class="date">01 November 2024</span>
                 </div>
             </div>
 
             <!-- Article Card 1 -->
             <div class="article-card">
-                <img src="article-image1.jpg" alt="Article 4">
+                <img src="img/lemari.jpg" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Prakerja Kembali Raih Apresiasi Kala Hadiri Mongolia Social Protection Forum</h4>
-                    <p>Mongolia, 29 Oktober 2024 – Prakerja kembali mendapatkan apresiasi dari mitra internasional...</p>
+                    <h4>Merawat Furnitur di Asrama: Tips Memperpanjang Usia Lemari dan Meja Belajar</h4>
+                    <p>Lemari dan meja belajar di asrama sering kali terbuat dari bahan kayu atau MDF. Artikel ini memberikan tips membersihkan, mencegah serangan rayap, dan langkah perbaikan ringan jika ada kerusakan.</p>
                         <span class="date">01 November 2024</span>
                 </div>
             </div>
             <!-- Article Card 2 -->
             <div class="article-card">
-                <img src="article-image2.jpg" alt="Article 5">
+                <img src="img/kamarmandi.jpg" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Panggilan untuk Alumni Prakerja: Survei Alumni Sudah Dibuka!</h4>
-                    <p>Sejak tahun 2020, Program Kartu Prakerja telah mendorong lebih dari 18,9 juta orang untuk meningkatkan keterampilannya...</p>
+                    <h4>Mengatasi Kerusakan Umum pada Kamar Mandi Asrama: Saluran Tersumbat dan Keran Bocor</h4>
+                    <p>Kamar mandi asrama sering menghadapi masalah seperti saluran air tersumbat dan keran bocor. Artikel ini membahas langkah-langkah praktis, mulai dari membersihkan pipa saluran hingga mengganti seal keran yang rusak. Disertai tips menjaga kebersihan untuk mencegah masalah berulang.</p>
                     <span class="date">01 November 2024</span>
                 </div>
             </div>
             <!-- Article Card 3 -->
             <div class="article-card">
-                <img src="article-image3.jpg" alt="Article 6">
+                <img src="img/sakelar.webp" alt="Featured" class="featured-image">
                 <div class="article-info">
-                    <h4>Kumpul Jasa Pekanbaru Dimulai: Alumni Prakerja Berkontribusi bagi UMKM dan...</h4>
-                    <p>Hai, Sobat Prakerja! Setelah sukses dalam berbagai program pemberdayaan...</p>
+                    <h4>Perbaikan Lampu dan Saklar Rusak di Fasilitas Kampus: Panduan Sederhana untuk Mahasiswa</h4>
+                    <p>Lampu yang berkedip atau saklar rusak dapat mengganggu aktivitas di ruang belajar atau asrama. Artikel ini memberikan panduan dasar mengecek penyebab kerusakan, mengganti lampu yang mati, dan kapan harus memanggil teknisi kampus untuk perbaikan lebih lanjut.</p>
                     <span class="date">31 Oktober 2024</span>
                 </div>
             </div>

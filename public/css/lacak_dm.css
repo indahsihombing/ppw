@@ -143,7 +143,7 @@ tr:hover {
     font-weight: bold;
 }
   
-  /* Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -269,3 +269,15 @@ body {
   .profile-icon:active {
     color: #295F98; /* Change to desired color when clicked */
   }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Tambahkan jarak antara elemen */
+}
+
+.user-name {
+    font-size: 16px;
+    color: #fff; /* Sesuaikan warna teks */
+    margin-left: 10px; /* Tambahkan jarak kiri untuk nama pengguna */
+}

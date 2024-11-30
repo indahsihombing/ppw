@@ -22,37 +22,37 @@
                 <div class="card-body">
                     <!-- Nama Lengkap -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Nama Lengkap:</strong></div>
+                        <div class="col-md-3"><strong>Nama Lengkap</strong></div>
                         <div class="col-md-9">{{ $report->nama_lengkap }}</div>
                     </div>
 
                     <!-- Nomor Handphone -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Nomor Handphone:</strong></div>
+                        <div class="col-md-3"><strong>Nomor Handphone</strong></div>
                         <div class="col-md-9">{{ $report->nomor_handphone }}</div>
                     </div>
 
                     <!-- Program Studi -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Program Studi:</strong></div>
+                        <div class="col-md-3"><strong>Program Studi</strong></div>
                         <div class="col-md-9">{{ $report->program_studi }}</div>
                     </div>
 
                     <!-- Lokasi Kerusakan -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Lokasi Kerusakan:</strong></div>
+                        <div class="col-md-3"><strong>Lokasi Kerusakan</strong></div>
                         <div class="col-md-9">{{ $report->lokasi_kerusakan }}</div>
                     </div>
 
                     <!-- Deskripsi Kerusakan -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Deskripsi Kerusakan:</strong></div>
+                        <div class="col-md-3"><strong>Deskripsi Kerusakan</strong></div>
                         <div class="col-md-9">{{ $report->deskripsi_kerusakan }}</div>
                     </div>
 
                     <!-- Foto Kerusakan -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Foto Bukti:</strong></div>
+                        <div class="col-md-3"><strong>Foto Bukti</strong></div>
                         <div class="col-md-9">
                             @if($report->foto_kerusakan)
                                 <img src="{{ asset('uploads/' . $report->foto_kerusakan) }}" alt="Foto Kerusakan" width="200">
@@ -64,17 +64,11 @@
 
                     <!-- Ditujukan Kepada -->
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Ditujukan Kepada:</strong></div>
+                        <div class="col-md-3"><strong>Ditujukan Kepada</strong></div>
                         <div class="col-md-9">{{ $report->ditujukan_kepada }}</div>
                     </div>
 
-                    <!-- Alasan Penolakan (hidden by default) -->
-                    <div class="row mb-3 rejection-reason" style="display: none;">
-                        <div class="col-md-3"><strong>Alasan Penolakan:</strong></div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="rejection_reason" placeholder="Masukkan alasan penolakan" required>
-                        </div>
-                    </div>
+                    
 
                     <!-- Tombol Terima dan Tolak -->
                     <div class="row mb-3">
@@ -85,27 +79,22 @@
                             </form>
                             <form action="{{ route('report.reject', $report->id) }}" method="POST" style="display:inline;">
                                 @csrf
-                                <button type="button" class="btn btn-danger" onclick="toggleRejectionReason(this)">Tolak</button>
-                                <div class="rejection-reason d-none">
-                                    <textarea name="rejection_reason" placeholder="Alasan penolakan"></textarea>
+                                <button type="submit" class="btn btn-danger">Tolak</button>
+                                <div class="mb-3">
+                                    
+                                    <label for="rejection_reason" class="form-label">Alasan Penolakan</label>
+                                    <input type="text" class="form-control" name="rejection_reason" required>
                                 </div>
-                                <button type="submit" class="btn btn-danger btn-sm d-none mt-2">Kirim Penolakan</button>
+                                
                             </form>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-    <script>
-        function toggleRejectionReason(button) {
-            const form = button.closest('form');
-            const rejectionReason = form.querySelector('.rejection-reason');
-            const rejectButton = form.querySelector('button[type="submit"]');
-            
-            rejectionReason.classList.toggle('d-none');
-            rejectButton.classList.toggle('d-none');
-        }
-    </script>
+
+    <script src="{{ asset('js/duktek_form.js') }}"></script>
 </body>
 </html>

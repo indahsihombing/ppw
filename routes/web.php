@@ -7,9 +7,14 @@ use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Auth;
 
+// Route root mengarahkan ke halaman login
 Route::get('/', function () {
-    return view('login');
-})->name('login');
+    return redirect()->route('login');
+});
+
+Route::get('/artikel_1', function () {
+    return view('isi_artikel');
+})->name('artikel_1');
 
 Route::get('/ulasan', function () {
     return view('ulasan');

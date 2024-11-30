@@ -312,3 +312,12 @@ body {
     background-color: #d0d7ef;
 }
 
+.no-underline {
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    color: inherit; /* Menggunakan warna teks yang diwariskan */
+}
+
+.no-underline:hover {
+    text-decoration: underline; /* Menambahkan garis bawah saat hover jika diinginkan */
+}
+

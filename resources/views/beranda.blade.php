@@ -18,11 +18,11 @@
         <div class="help-section">
             <div class="help-card">
                 <img src="{{ asset('img/online-registration.png') }}" alt="Pengiriman Formulir">                
-                <a href="{{ route('form') }}"><p>Kirim Laporan</p></a>
+                <a href="{{ route('form') }}" class="no-underline"><p>Kirim Laporan</p></a>
             </div>
             <div class="help-card">
                 <img src="{{ asset('img/tracking.png') }}"  alt="Lacak Status">
-                <a href="{{ route('lacak_dm') }}"><p>Lacak Status</p></a>
+                <a href="{{ route('lacak_dm') }}" class="no-underline"><p>Lacak Status</p></a>
             </div>
         </div>
     </main>

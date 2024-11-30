@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar and Navbar Example</title>
-    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/lacak_dm.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
@@ -26,6 +26,10 @@
                 <button type="submit" class="logout-btn">Keluar</button>
             </form>
             <i class="fa fa-user profile-icon"></i>
+            <!-- Tampilkan nama pengguna yang sedang login -->
+            @if(Auth::check())
+                <span class="user-name">{{ Auth::user()->name }}</span>
+            @endif
         </div>
     </div>
     <!-- Title Section within the Header for a seamless look -->
@@ -54,7 +58,7 @@
 
 
     <div class="status-header-kecil">
-        <p>Showing 1-5 of {{ $reports->count() }} items.</p>
+        <p>Showing 1-10 of {{ $reports->count() }} items.</p>
     </div>
 
     <table class="table table-sm">
@@ -74,14 +78,15 @@
                 <td>{{ $report->lokasi_kerusakan }}</td>
                 <td>
                     @if($report->status == 'accepted')
-                    <span class="text-success">Diterima</span>
+                        <span class="text-success">Diterima</span>
                     @elseif($report->status == 'rejected')
-                    <span class="text-danger">Ditolak</span>
-                    <p>Alasan: {{ $report->rejection_reason }}</p>
+                        <span class="text-danger">Ditolak</span>
+                        <p>Alasan: {{ $report->rejection_reason }}</p>
                     @else
-                    <span class="text-warning">Dalam Proses</span>
+                        <span class="text-warning">Dalam Proses</span>
                     @endif
                 </td>
+                
             </tr>
             @endforeach
         </tbody>
