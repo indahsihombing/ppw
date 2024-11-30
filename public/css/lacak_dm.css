@@ -1,21 +1,41 @@
+/* Table Styling */
 table {
-    font-family: Arial, sans-serif;
-    border-collapse: collapse;
-    width: 75%;
-    margin-left: 21%; /* Menambahkan margin kiri auto untuk menggeser tabel ke kanan */
-    margin-right: 0; /* Menghapus margin kanan */
-    margin-top: 70px;
-  }
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    th {
-      background-color: #f2f2f2;
-    }
-    
+    font-family: 'Poppins', sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 80%; /* Sesuaikan lebar tabel */
+    margin: 20px auto; /* Pusatkan tabel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    border-radius: 8px; /* Tambahkan border radius */
+    overflow: hidden; /* Pastikan radius tidak terpotong */
+    background: #fff;
+}
+
+th, td {
+    padding: 12px 15px; /* Ruang lebih nyaman */
+    text-align: left;
+}
+
+th {
+    background-color: #295F98; /* Warna header tabel */
+    color: #080808;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+td {
+    font-size: 14px;
+    color: #555;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Warna baris genap */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Warna saat hover */
+}
+
     .status-container {
       display: inline-block;
       padding: 4px 8px;
@@ -64,7 +84,7 @@ table {
   .status-header-kecil {
       font-size: 13px; /* Ukuran teks lebih besar sedikit */
       text-align: center; /* Posisikan teks di tengah */
-      margin-right: 650px;
+      margin-right: 1550px;
   }
   
   
@@ -81,12 +101,6 @@ table {
       margin-top: 20px;
   }
   
-  form {
-      background-color: #f7f7f7;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
   
   form label {
       font-weight: bold;
@@ -95,87 +109,163 @@ table {
   form .form-control, form .form-select {
       margin-bottom: 10px;
   }
-  .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      border-radius: 5px;
-      margin-right: 600px;
+
+  /* Pagination Styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    list-style: none;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #295F98;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #295F98;
+    color: #fff;
+    border-color: #295F98;
+}
+
+.pagination .active {
+    background-color: #6cb4f2;
+    color: #fff;
+    border-color: #6cb4f2;
+    font-weight: bold;
+}
+  
+  /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.header {
+    background: linear-gradient(to right, #295F98, #6cb4f2);
+    padding: 15px 10%;
+    color: #fff;
+    position: relative;
+    height: 40vh; /* Extend header to cover half the viewport height */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 25px; /* Adjust the radius as needed */
+    border-bottom-right-radius: 25px; /* Adjust the radius as needed */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: lowercase;
+}
+
+.logo img {
+    height: 700px; /* Ubah nilai ini sesuai dengan ukuran yang diinginkan */
+    width: auto; /* Menjaga aspek rasio gambar */
+}
+
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color: rgb(253, 253, 253);
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.nav .active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+.title-section {
+    text-align: center;
+    font-weight: bold; /* Optional: to make the text bold */
+    margin-top: 100px; /* Adjust this value as needed */
+  }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    font-size: 28px; /* Adjust the size as needed */
   }
   
-  .pagination a {
-      text-decoration: none;
-      color: #333;
-      padding: 8px 12px;
-      margin: 0 4px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+
+.login-btn, .logout-btn {
+    border: 10px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+}
+
+.logout-btn {
+    background: #ff6600;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.profile-icon {
+    
+    color: #fff; /* Initial color */
+    cursor: pointer;
+    transition: color 0.3s; /* Smooth transition for color change */
+    line-height: 1; /* Ensure the icon is not constrained by line height */
   }
   
-  .pagination a:hover {
-      background-color: #e0e0e0;
-  }
   
-  .pagination .active {
-      background-color: #ddd;
-      font-weight: bold;
-  }
-  
-  /* Panel Notifikasi */
-  .notif-panel {
-      display: none;
-      position: absolute;
-      top: 60px; /* Di bawah navbar */
-      right: 20px;
-      width: 350px;
-      background-color: white;
-      border: 1px solid #ddd;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-radius: 5px;
-      z-index: 1000;
-      padding: 15px;
-      font-family: Arial, sans-serif;
-  }
-  .notif-panel hr {
-      border: none; /* Menghilangkan border default */
-      border-top: 1px solid #ccc; /* Gaya garis */
-      margin: 10px 0; /* Jarak atas dan bawah */
-      width: 100%; /* Mengatur lebar penuh */
-  }
-  
-  .notif-header {
-      font-weight: bold;
-      color: #333;
-      text-align: center;
-  }
-  
-  .notif-panel ul {
-      list-style: none;
-      padding: 0;
-  }
-  
-  .notif-panel ul li {
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-  }
-  
-  .notif-panel ul li:last-child {
-      border-bottom: none;
-  }
-  
-  .show-more {
-      text-align: center;
-      display: block;
-      margin-top: 10px;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-  }
-  
-  .show-more:hover {
-      text-decoration: underline;
+  .profile-icon:active {
+    color: #295F98; /* Change to desired color when clicked */
   }

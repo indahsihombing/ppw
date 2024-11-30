@@ -1,22 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('form');
-});
-
-Route::get('/form', function () {
-    return view('form');
-});
+    return view('login');
+})->name('login');
 
 Route::get('/ulasan', function () {
     return view('ulasan');
-});
+})->name('ulasan');
 
 Route::get('/panduan', function () {
     return view('panduan');
-});
+})->name('panduan');
 
 Route::get('/panduan_dm', function () {
     return view('panduan_dm');
@@ -42,51 +43,68 @@ Route::get('/form', function () {
     return view('form');
 })->name('form');
 
+Route::get('/beranda', function () {
+    return view('beranda');
+})->name('beranda');
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminController;
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
-use Illuminate\Support\Facades\Auth;
-
-Route::middleware(['guest'])->group(function () {
-    Route::get('/', [LoginController::class, 'duktek', 'maintenance', 'user'])->name('login');
-    Route::post('/', [LoginController::class, 'login']);
-});
-Route::get('/home', function () {
-    $user = Auth::user();
-    if($user->role == 'duktek') return redirect('/duktek');
-    elseif($user->role == 'maintenance') return redirect('/maintenance');
-    else return redirect('/user');
-});
-
-Route::middleware(['auth'])->group(function(){
-Route::get('/duktek', [AdminController::class, 'duktek']);
-Route::get('/maintenance', [AdminController::class, 'maintenance']);
-Route::get('/user', [AdminController::class, 'user']);
-});
-
-Route::get('/login', [LoginController::class, 'login']);
-Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/lacak', [AdminController::class, 'lacak'])->name('lacak');;
 
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+});
+
+// Rute untuk Logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/home', function () {
+    $user = Auth::user();
+    if ($user->role == 'duktek') {
+        return redirect()->route('duktek');
+    } elseif ($user->role == 'maintenance') {
+        return redirect()->route('maintenance');
+    } else {
+        return redirect()->route('user');
+    }
+})->name('home');
+
+
+
+// Rute untuk Admin (duktek dan maintenance)
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/duktek', [AdminController::class, 'duktek'])->name('duktek');
+    Route::get('/maintenance', [AdminController::class, 'maintenance'])->name('maintenance');
+    Route::get('/lacak', [AdminController::class, 'lacak'])->name('lacak');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user', [UserController::class, 'user'])->name('user');
+});
+
+
+
+
+
 //ini untuk form 
-// routes/web.php
+
 
 use App\Http\Controllers\ReportController;
-Route::get('/duktek', [ReportController::class, 'duktek']);
-
-
 Route::get('/lacak', [ReportController::class, 'lacak'])->name('lacak');
 //buat untuk lacak_dm
 Route::get('/lacak_dm', [ReportController::class, 'lacak_dm'])->name('lacak_dm');
 
 Route::get('/duktek_form', [ReportController::class, 'index'])->name('duktek_form');
 Route::post('/report/store', [ReportController::class, 'store'])->name('form.store'); 
+Route::post('/store', [ReportController::class, 'store'])->withoutMiddleware(['auth:sanctum']);
+
 Route::get('/report/get', [ReportController::class, 'getAllReports'])->name('reports.get'); 
 Route::post('/report/{id}/accept', [ReportController::class, 'accept'])->name('report.accept');
 Route::post('/report/{id}/reject', [ReportController::class, 'reject'])->name('report.reject');
-
 
 
 //hapus data

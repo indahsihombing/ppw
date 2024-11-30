@@ -1,3 +1,4 @@
+
 /* Reset */
 * {
     margin: 0;
@@ -34,6 +35,12 @@ body {
     font-weight: 700;
     text-transform: lowercase;
 }
+
+.logo img {
+    height: 700px; /* Ubah nilai ini sesuai dengan ukuran yang diinginkan */
+    width: auto; /* Menjaga aspek rasio gambar */
+}
+
 
 .nav {
     display: flex;
@@ -118,7 +125,7 @@ body {
   .profile-icon:active {
     color: #295F98; /* Change to desired color when clicked */
   }
-
+  
 /* Header title section */
 .main-content h1 {
     text-align: center;
@@ -134,148 +141,174 @@ body {
     padding: 0 10%;
 }
 
-.tabs {
+.help-section {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 10px;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
 }
 
-.tab {
-    background-color: #e0e7ff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #2f3c7e;
-    font-weight: bold;
-}
-
-.tab.active {
-    background-color: #2f3c7e;
-    color: white;
-}
-
-.search-bar {
-    margin-left: auto;
-    padding: 10px 15px;
-    border: 2px solid #e0e7ff;
-    border-radius: 20px;
-    font-size: 16px;
-    width: 200px;
-    outline: none;
-}
-
-.featured-article {
-    max-width: 1000px;
-    margin: 20px auto;
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    background-color: #ffffff;
+.help-card {
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    width: 300px;
+    height: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
 }
 
-.featured-image {
-    width: 40%;
-    border-radius: 10px;
+.help-card:hover {
+    transform: translateY(-5px);
+
 }
 
-.featured-content {
-    width: 60%;
+.help-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
 }
 
-.featured-content h2 {
-    font-size: 24px;
-    color: #2f3c7e;
-}
-
-.featured-content p {
-    font-size: 16px;
+.help-card p {
+    font-size: 20px;
     color: #333;
-    margin: 10px 0;
+    font-weight: 500;
+    margin-top: 10px;
 }
 
-.category {
-    background-color: #ffefc6;
-    color: #ffbb00;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+
+.steps-section {
+    background-color: #f9f9f9;
+    padding: 80px 80px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.reading-time {
-    color: #888;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-.tag {
-    color: #2f3c7e;
-    font-weight: bold;
-}
-
-.date {
-    color: #888;
-}
-
-.latest-articles {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-}
-
-.latest-articles h3 {
-    font-size: 24px;
+.steps-section h2 {
+    font-size: 28px;
+    font-weight: 700;
     color: #2f3c7e;
     margin-bottom: 20px;
 }
 
-.article-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Adjust the gap between cards as needed */
-  }
-  
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+}
 
-.article-card {
+.step-card {
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 10px 20px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 32%;
-    overflow: hidden;
-  transition: transform 0.3s;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
 }
 
-.article-card:hover {
+.step-card:hover {
     transform: translateY(-5px);
-  }
-
-.article-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
 }
 
-.article-info {
-    padding: 15px;
-}
-
-.article-info h4 {
+.step-number {
+    background-color: #2f3c7e;
+    color: #ffffff;
     font-size: 18px;
-    color: #2f3c7e;
-    margin: 10px 0;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-.article-info p {
+.step-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2f3c7e;
+}
+
+.step-card p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+body {
+    background-color: #f5f5f5;
+}
+
+.faq-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    color: #2f3c7e;
+}
+
+.faq-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: #2f3c7e;
+}
+
+.faq-answer {
+    padding: 20px;
+    display: none;
     color: #333;
     font-size: 14px;
-    margin: 10px 0;
+    line-height: 1.5;
+    background-color: #ffffff;
+}
+
+.icon {
+    font-size: 24px;
+    color: #2f3c7e;
+}
+
+.faq-question:hover .icon {
+    color: #2f3c7e;
+}
+
+.copy-link {
+    background-color: #e0e7ff;
+    color: #2f3c7e;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.copy-link:hover {
+    background-color: #d0d7ef;
 }
 

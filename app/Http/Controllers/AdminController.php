@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     function duktek(){
         
-        return view('lacak');
+        return view('dashboard');
     
     }
 
@@ -17,22 +17,9 @@ class AdminController extends Controller
         // echo "Mahasiswa Page";
         // echo "<h1>". Auth::user()->name ."</h1>";
         // echo "<a href='/logout'>Logout</a>";
-    return view('lacak_dm');
+    return view('dashboard');
 
     }
 
-    function user(){
-        // echo "Mahasiswa Page";
-        // echo "<h1>". Auth::user()->name ."</h1>";
-        // echo "<a href='/logout'>Logout</a>";
-    return view('form');
-
-    }
-
-
-    function lacak(){
-        return view('lacak');
-
-    }
 
 }

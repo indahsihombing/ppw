@@ -5,61 +5,51 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
 class LoginController extends Controller
 {
-    function duktek()
+    public function showLoginForm()
     {
         return view('login');
-
     }
 
-    function maintenance()
-    {
-        return view('login');
-
-    }
-
-    function user()
-    {
-        return view('login');
-
-    }
-
-    function login(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ], [
-            'email.required' => 'Please fill put this field.',
-            'password.required' => 'Please fill put this field.',
+            'email.required' => 'Please fill out this field.',
+            'password.required' => 'Please fill out this field.',
         ]);
 
         $infologin = [
             'email' => $request->email,
             'password' => $request->password
         ];
-        
-        if(Auth::attempt($infologin)){
+
+        if (Auth::attempt($infologin)) {
             $user = Auth::user();
-            // dd(Auth::user()->role);
-            // Redirect based on user role
-            if ($user->role == 'duktek') {
-                return redirect()->route('duktek');
-            } elseif ($user->role == 'maintenance') {
-                return redirect()->route('maintenance');
-            } elseif ($user->role == 'user') {
+            if ($user->role == 'user') {
                 return redirect()->route('user');
             }
+        } elseif (Auth::guard('admin')->attempt($infologin)) {
+            $admin = Auth::guard('admin')->user();
+            if ($admin->role == 'duktek') {
+                return redirect()->route('duktek');
+            } elseif ($admin->role == 'maintenance') {
+                return redirect()->route('maintenance');
+            }
         } else {
-            return redirect('')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
+            return redirect()->back()->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
         }
     }
 
-    function logout(){
+    public function logout(Request $request)
+    {
         Auth::logout();
-        return redirect('');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login'); // Pastikan ini mengarah ke halaman login
     }
         
 }

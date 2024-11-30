@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="css/lacak.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="js/dashboard.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -51,48 +52,32 @@
       </header>
 
       <div class="dashboard">
-        <h2 class="dashboard-title">Lacak Status Laporan</h2>
+        <h2 class="dashboard-title">Dashboard</h2>
+        
 
-<div class="container mt-5">
-  
-  @if(session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
-  @endif
+        <!-- Statistic Cards -->
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-info">
+              <h3>Total Laporan Masuk</h3>
+ 
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-info">
+              <h3>Total Laporan Selesai</h3>
 
-  <table class="table table-bordered">
-    <table class="data-table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Deskripsi Kerusakan</th>
-            <th>Lokasi Kerusakan</th>
-            <th>Ditujukan Kepada</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-         @foreach($reports as $index => $report)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-              <td>{{ $report->deskripsi_kerusakan }}</td>
-              <td>{{ $report->lokasi_kerusakan }}</td>
-              <td>{{ $report->ditujukan_kepada }}</td>
-              <td>
-                <a href="{{ route('duktek_form', ['id' => $report->id]) }}" class="btn-view">Lihat Detail</a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-      
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-info">
+              <h3>Total Laporan Ditolak</h3>
 
-</body>
-</html>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <script src="jss/index.js" defer></script>
-
+            </div>
+          </div>
+        </div>
+        <script src="js/dashboard.js"></script>
+      </body>
+      </html>
 
 

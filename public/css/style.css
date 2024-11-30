@@ -1,100 +1,209 @@
-/* Main Content Form */
-form label, 
-form .form-control, 
-form .form-select, 
-form button {
-    font-family: 'Poppins', sans-serif;
-    
-}
-
-/* Notifikasi */
-.notif-panel {
-    font-family: 'Poppins', sans-serif;
-}
-
-
-/* MAIN CONTENT */
-
-.main-content {
-    padding-top: 20px;
-}
-
-main {
-    padding-top: 50px; /* Menyesuaikan dengan tinggi navbar */
-    margin-top: 30px !important
-}
-
-
-form {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    font-weight: bold;
-}
-
-form .form-control, form .form-select {
-    margin-bottom: 10px;
-}
-
-/* Panel Notifikasi */
-.notif-panel {
-    display: none;
-    position: absolute;
-    top: 60px; /* Di bawah navbar */
-    right: 20px;
-    width: 350px;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    z-index: 1000;
-    padding: 15px;
-    font-family: Arial, sans-serif;
-}
-.notif-panel hr {
-    border: none; /* Menghilangkan border default */
-    border-top: 1px solid #ccc; /* Gaya garis */
-    margin: 10px 0; /* Jarak atas dan bawah */
-    width: 100%; /* Mengatur lebar penuh */
-}
-
-.notif-header {
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
-
-.notif-panel ul {
-    list-style: none;
+/* Reset */
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.notif-panel ul li {
-    padding: 10px 0;
+body {
+    background-color: #f5f5f5;
+}
+
+.header {
+    background: linear-gradient(to right, #295F98, #6cb4f2);
+    padding: 15px 10%;
+    color: #fff;
+    position: relative;
+    height: 40vh; /* Extend header to cover half the viewport height */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 25px; /* Adjust the radius as needed */
+    border-bottom-right-radius: 25px; /* Adjust the radius as needed */
+}
+
+.header-content {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
 }
 
-.notif-panel ul li:last-child {
-    border-bottom: none;
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: lowercase;
 }
 
-.show-more {
-    text-align: center;
-    display: block;
-    margin-top: 10px;
-    color: black;
-    font-weight: bold;
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    position: relative;
     text-decoration: none;
+    color: rgb(253, 253, 253);
+    padding: 10px 15px;
+    transition: color 0.3s;
 }
 
-.show-more:hover {
-    text-decoration: underline;
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
 }
 
+.nav a:hover::after,
+.nav a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
+.nav .active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+.title-section {
+    text-align: center;
+    font-weight: bold; /* Optional: to make the text bold */
+    margin-top: 100px; /* Adjust this value as needed */
+  }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    font-size: 28px; /* Adjust the size as needed */
+  }
+  
+
+.login-btn, .logout-btn {
+    border: 10px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+}
+
+.logout-btn {
+    background: #ff6600;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.profile-icon {
+    
+    color: #fff; /* Initial color */
+    cursor: pointer;
+    transition: color 0.3s; /* Smooth transition for color change */
+    line-height: 1; /* Ensure the icon is not constrained by line height */
+  }
+  
+  
+  .profile-icon:active {
+    color: #295F98; /* Change to desired color when clicked */
+  }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 33px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 25px;
+    color: #295F98;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  label span {
+    font-weight: normal;
+    color: #888;
+  }
+  
+  input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .helper-text {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  button.submit-btn {
+    background-color: #295F98;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #0055c3;
+  }
+  
+  /* Gaya untuk tombol Kirim */
+.btn-primary {
+    background-color: #295F98; /* Warna biru */
+    border: none; /* Menghilangkan border */
+    color: white; /* Warna teks */
+    padding: 10px 20px; /* Padding untuk tombol */
+    font-size: 16px; /* Ukuran font */
+    cursor: pointer; /* Mengubah cursor saat hover */
+    border-radius: 4px; /* Menambahkan border radius */
+    transition: background-color 0.3s ease; /* Transisi untuk efek hover */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}

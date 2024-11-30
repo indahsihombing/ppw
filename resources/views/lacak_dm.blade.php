@@ -7,11 +7,32 @@
     <title>Sidebar and Navbar Example</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/lacak.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    @include('sidebar')
-    @include('navbar')
+    <link rel="stylesheet" href="{{ asset('css/lacak_dm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+
+<!-- Header Section -->
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="{{ asset('img/logo.png') }}" alt="Delcare Logo" style="height: 70px;"> <!-- Ganti dengan path logo Anda -->
+        </div>
+        <nav class="nav">
+            <a href="{{ route('beranda') }}" class="{{ request()->is('beranda') ? 'active' : '' }}">Beranda</a>
+            <a href="{{ route('panduan') }}" class="{{ request()->is('panduan') ? 'active' : '' }}">Panduan</a>
+        </nav>
+        <div class="auth-buttons">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="logout-btn">Keluar</button>
+            </form>
+            <i class="fa fa-user profile-icon"></i>
+        </div>
+    </div>
+    <!-- Title Section within the Header for a seamless look -->
+    <div class="title-section">
+        <h1>Lacak Status</h1>
+    </div>
+</header>
 
     <style>
         /* Custom CSS to resize the table */
@@ -25,14 +46,12 @@
             padding: 8px 12px; /* Reduced padding for smaller table */
         }
     </style>
-</head>
+
 
 <body>
 
     <!-- Main content -->
-    <div class="status-header">
-        <h2>LACAK STATUS</h2>
-    </div>
+
 
     <div class="status-header-kecil">
         <p>Showing 1-5 of {{ $reports->count() }} items.</p>
@@ -41,7 +60,7 @@
     <table class="table table-sm">
         <thead>
             <tr>
-                <th>#</th>
+                <th>No.</th>
                 <th>Deskripsi Kerusakan</th>
                 <th>Lokasi Kerusakan</th>
                 <th>Status</th>
@@ -80,6 +99,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="js/lacak.js" defer></script>
     <script src="js/index.js" defer></script>
+    @include('footer')
 </body>
 
 </html>
