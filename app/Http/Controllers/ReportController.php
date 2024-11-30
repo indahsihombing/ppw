@@ -162,6 +162,16 @@ public function reject(Request $request, $id)
     return redirect()->back()->with('success', 'Laporan berhasil ditolak.');
 }
 
+public function dashboard()
+{
+    // Hitung laporan berdasarkan status
+    $totalReports = Report::count();
+    $acceptedReports = Report::where('status', 'accepted')->count();
+    $rejectedReports = Report::where('status', 'rejected')->count();
+
+    // Kirim data ke view
+    return view('dashboard', compact('totalReports', 'acceptedReports', 'rejectedReports'));
+}
 
 
     // Hapus foto dari folder uploads jika ada

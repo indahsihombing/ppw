@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 
 // Route root mengarahkan ke halaman login
@@ -52,9 +52,13 @@ Route::get('/beranda', function () {
     return view('beranda');
 })->name('beranda');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route untuk duktek
+Route::get('/duktek', [ReportController::class, 'dashboard'])->name('dashboard');
+
+// Route untuk maintenance
+Route::get('/maintenance', [ReportController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/dashboard', [ReportController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/lacak', [AdminController::class, 'lacak'])->name('lacak');;
 
@@ -93,12 +97,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-
-
-//ini untuk form 
-
-
-use App\Http\Controllers\ReportController;
 Route::get('/lacak', [ReportController::class, 'lacak'])->name('lacak');
 //buat untuk lacak_dm
 Route::get('/lacak_dm', [ReportController::class, 'lacak_dm'])->name('lacak_dm');

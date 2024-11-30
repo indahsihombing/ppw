@@ -35,9 +35,9 @@ class LoginController extends Controller
         } elseif (Auth::guard('admin')->attempt($infologin)) {
             $admin = Auth::guard('admin')->user();
             if ($admin->role == 'duktek') {
-                return redirect()->route('duktek');
+                return redirect()->route('dashboard');
             } elseif ($admin->role == 'maintenance') {
-                return redirect()->route('maintenance');
+                return redirect()->route('dashboard');
             }
         } else {
             return redirect()->back()->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();

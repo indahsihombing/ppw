@@ -68,32 +68,43 @@
                         <div class="col-md-9">{{ $report->ditujukan_kepada }}</div>
                     </div>
 
-                    
-
-                    <!-- Tombol Terima dan Tolak -->
+                    @if($report->status === 'pending')
+                    <!-- Tampilkan tombol Terima dan Tolak -->
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
+                            <!-- Tombol Terima -->
                             <form action="{{ route('report.accept', $report->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Terima</button>
                             </form>
+                            <!-- Tombol Tolak -->
                             <form action="{{ route('report.reject', $report->id) }}" method="POST" style="display:inline;">
                                 @csrf
-                                <button type="submit" class="btn btn-danger">Tolak</button>
                                 <div class="mb-3">
-                                    
                                     <label for="rejection_reason" class="form-label">Alasan Penolakan</label>
                                     <input type="text" class="form-control" name="rejection_reason" required>
                                 </div>
-                                
+                                <button type="submit" class="btn btn-danger">Tolak</button>
                             </form>
-                            
                         </div>
                     </div>
-                </div>
+                @elseif($report->status === 'accepted')
+                    <!-- Laporan diterima -->
+                    <div class="alert alert-success">
+                        Laporan ini telah <strong>diterima</strong>.
+                    </div>
+                @elseif($report->status === 'rejected')
+                    <!-- Laporan ditolak -->
+                    <div class="alert alert-danger">
+                        Laporan ini telah <strong>ditolak</strong>.
+                        <p><strong>Alasan Penolakan:</strong> {{ $report->rejection_reason }}</p>
+                    </div>
+                @endif
             </div>
         @endforeach
     </div>
+
+                
 
     <script src="{{ asset('js/duktek_form.js') }}"></script>
 </body>

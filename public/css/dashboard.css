@@ -126,6 +126,7 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s;
+  text-align: center; /* Menempatkan teks di tengah secara horizontal */
 }
 
 .stat-card:hover {
@@ -148,3 +149,5 @@ cursor: pointer;
   font-size: 20px;
   font-weight: bold;
 }
+
+

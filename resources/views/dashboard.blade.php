@@ -55,29 +55,30 @@
         <h2 class="dashboard-title">Dashboard</h2>
         
 
-        <!-- Statistic Cards -->
         <div class="stats">
+          <!-- Total Laporan Masuk -->
           <div class="stat-card">
             <div class="stat-info">
               <h3>Total Laporan Masuk</h3>
- 
+              <p class="stat-number">{{ $totalReports }}</p> <!-- Data dari controller -->
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-info">
-              <h3>Total Laporan Selesai</h3>
 
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-info">
-              <h3>Total Laporan Ditolak</h3>
+           <!-- Total Laporan Diterima -->
+  <div class="stat-card">
+    <div class="stat-info">
+      <h3>Total Laporan Diterima</h3>
+      <p class="stat-number">{{ $acceptedReports }}</p> <!-- Data dari controller -->
+    </div>
+  </div>
 
-            </div>
-          </div>
-        </div>
-        <script src="js/dashboard.js"></script>
-      </body>
-      </html>
+  
+  <div class="stat-card">
+    <div class="stat-info">
+      <h3>Total Laporan Ditolak</h3>
+      <p class="stat-number">{{ $rejectedReports }}</p> <!-- Data dari controller -->
+    </div>
+  </div>
+</div
 
 
