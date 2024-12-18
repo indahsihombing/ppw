@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('ulasan') }}">
+            <a href="{{ route('lacak_ulasan') }}">
               <img src="img/review.png" alt="Ulasan Icon" class="menu-icon">
               Ulasan
             </a>

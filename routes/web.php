@@ -88,7 +88,21 @@ Route::post('/guides', [GuideController::class, 'store'])->name('guides.store');
 Route::post('/store', [ReportController::class, 'store'])->withoutMiddleware(['auth:sanctum']);
 Route::post('/report/store', [ReportController::class, 'store'])->name('form.store');
 
+// Route untuk menyelesaikan laporan kerusakan
+Route::post('/report/{id}/complete', [ReportController::class, 'complete'])->name('report.complete');
+// Route untuk mengirim review laporan kerusakan
+Route::post('/report/{id}/review', [ReportController::class, 'submitReview'])->name('report.review');
 
+Route::get('/lacak_ulasan', [ReportController::class, 'lacak_ulasan'])->name('lacak_ulasan');
+// Route untuk melihat ulasan berdasarkan ID laporan
+Route::get('/ulasan/{id}', [ReportController::class, 'showReview'])->name('isi_ulasan');
+
+// Route untuk menyimpan ulasan
+Route::post('/reviews', [ReportController::class, 'storeReview'])->name('review.store');
+Route::delete('/reviews/{id}', [ReportController::class, 'deleteReview'])->name('review.destroy');
+//hapus data
+Route::delete('/reviews/{id}', [ReportController::class, 'destroy'])->name('review.delete');
+// Route::delete('/report/{id}', [ReportController::class, 'destroy'])->name('report.destroy');
 
 
 

@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use Illuminate\Http\Request;
 use App\Models\Report;
+use App\Models\Review;
+use Illuminate\Http\JsonResponse;
 
 class ReportController extends Controller
 {
@@ -141,7 +143,7 @@ class ReportController extends Controller
     }
 }
 
-// hateoas 
+// hateoas reports.show
 public function show($id)
 {
     try {
@@ -231,37 +233,10 @@ public function update(Request $request, $id)
 }
 public function destroy($id)
 {
-    try {
-        // Cari laporan berdasarkan ID
-        $report = Report::findOrFail($id);
+    $review = Review::findOrFail($id);
+    $review->delete();
 
-        // Hapus foto jika ada
-        if ($report->foto_kerusakan) {
-            unlink(public_path('uploads/' . $report->foto_kerusakan));
-        }
-
-        // Hapus laporan
-        $report->delete();
-
-        // Kembalikan respons JSON
-        return response()->json([
-            'success' => true,
-            'message' => 'Laporan berhasil dihapus.',
-        ], 200); // HTTP 200 OK
-
-    } catch (ModelNotFoundException $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Laporan tidak ditemukan.',
-        ], 404); // HTTP 404 Not Found
-
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Terjadi kesalahan saat menghapus laporan.',
-            'error' => $e->getMessage()
-        ], 500); // HTTP 500 Internal Server Error
-    }
+    return redirect()->back()->with('success', 'Review telah dihapus.');
 }
 
 
@@ -308,30 +283,21 @@ public function destroy($id)
     
     public function lacak_dm()
     {
-        $reports = Report::select('deskripsi_kerusakan', 'lokasi_kerusakan', 'ditujukan_kepada', 'status', 'rejection_reason')->get();
+        $reports = Report::select('id', 'deskripsi_kerusakan', 'lokasi_kerusakan', 'ditujukan_kepada', 'status', 'rejection_reason')->get();
         return view('lacak_dm', compact('reports'));
     }
     
     
 public function duktek()
 {
-    // Ambil data dari tabel `reports`
+    // Ambil data dari tabel reports
     $reports = Report::select('id', 'deskripsi_kerusakan', 'lokasi_kerusakan', 'ditujukan_kepada')->get();
     
     // Kirim data ke view 'lacak'
     return view('lacak', compact('reports'));
 }
 
-public function accept($id)
-{
-    $report = Report::findOrFail($id);
-    $report->status = 'accepted';
-    $report->save();
 
-    // Kirim notifikasi ke mahasiswa
-    // Anda dapat menggunakan event dan listener atau langsung mengupdate session
-    return redirect()->back()->with('success', 'Laporan berhasil diterima.');
-}
 
 public function reject(Request $request, $id)
 {
@@ -355,6 +321,123 @@ public function dashboard()
     return view('dashboard', compact('totalReports', 'acceptedReports', 'rejectedReports'));
 }
 
+public function accept($id)
+{
+    $report = Report::findOrFail($id);
+    $report->status = 'accepted';
+    $report->save();
+
+    return redirect()->back()->with('success', 'Laporan berhasil diterima.');
+}
+
+public function complete($id)
+{
+    $report = Report::findOrFail($id);
+
+    if ($report->status !== 'accepted') {
+        return redirect()->back()->with('error', 'Hanya laporan yang telah diterima dapat diselesaikan.');
+    }
+
+    $report->status = 'completed';  // Tandai laporan sebagai selesai
+    $report->save();
+
+    return redirect()->back()->with('success', 'Laporan telah diselesaikan.');
+}
+public function submitReview(Request $request, $id)
+{
+    $request->validate([
+        'review' => 'required|string|max:1000',
+        'rating' => 'nullable|integer|min:1|max:5',
+    ]);
+
+    try {
+        $report = Report::findOrFail($id);
+
+        if ($report->status !== 'completed') {
+            return redirect()->back()->with('error', 'Ulasan hanya dapat diberikan jika laporan telah selesai.');
+        }
+
+        Review::create([
+            'report_id' => $id,
+            'review' => $request->input('review'),
+            'rating' => $request->input('rating'),
+        ]);
+
+        return redirect()->route('lacak_dm')->with('success', 'Ulasan berhasil disimpan.');
+    } catch (ModelNotFoundException $e) {
+        return redirect()->route('lacak_dm')->with('error', 'Laporan tidak ditemukan.');
+    }
+}
+public function showReview($id)
+{
+    $report = Report::with('reviews')->findOrFail($id);
+
+    return view('isi_ulasan', compact('report'));
+}
+
+public function lacak_ulasan()
+{
+    $reports = Report::with('reviews') // Mengambil relasi review dari tabel report
+        ->whereHas('reviews') // Hanya laporan yang memiliki review
+        ->select('id', 'deskripsi_kerusakan', 'lokasi_kerusakan', 'ditujukan_kepada')
+        ->get();
+
+    return view('lacak_ulasan', compact('reports'));
+}
+public function markAsCompleted($id)
+{
+    $report = Report::findOrFail($id);
+    $report->status = 'completed'; // Mengubah status menjadi 'Selesai'
+    $report->save();
+
+    return redirect()->back()->with('success', 'Laporan berhasil diselesaikan.');
+}
+public function storeReview(Request $request)
+{
+    $request->validate([
+        'report_id' => 'required|exists:reports,id',
+        'review' => 'required|string|max:1000',
+        'rating' => 'required|integer|min:1|max:5',
+    ]);
+
+    $review = new Review();
+    $review->report_id = $request->input('report_id');
+    $review->review = $request->input('review');
+    $review->rating = $request->input('rating');
+    $review->save();
+
+    // Kembali ke halaman sebelumnya
+    return redirect()->back()->with('success', 'Ulasan berhasil disimpan.');
+}
+
+public function deleteReviewAPI($id)
+{
+    try {
+        $review = Review::findOrFail($id);
+
+        // Menghapus review dari database
+        $review->delete();
+
+        return redirect()->back()->with('success', 'Ulasan berhasil dihapus.');
+    } catch (ModelNotFoundException $e) {
+        return redirect()->back()->with('error', 'Ulasan tidak ditemukan.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus ulasan.');
+    }
+}
+
+
+
+    // Hapus foto dari folder uploads jika ada
+    // if ($report->foto_kerusakan && file_exists(public_path('uploads/' . $report->foto_kerusakan))) {
+    //     unlink(public_path('uploads/' . $report->foto_kerusakan));
+    // }
+
+    // $report->delete();
+
+    // return redirect()->route('duktek_form');
+
+
 
     // Hapus foto dari folder uploads jika ada
     // if ($report->foto_kerusakan && file_exists(public_path('uploads/' . $report->foto_kerusakan))) {
@@ -366,3 +449,6 @@ public function dashboard()
     // return redirect()->route('duktek_form');
 }
 
+
+
+//UNTUK API

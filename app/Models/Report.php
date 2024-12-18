@@ -15,8 +15,17 @@ class Report extends Model
         'program_studi',
         'lokasi_kerusakan',
         'deskripsi_kerusakan',
-        'ditujukan_kepada',
         'foto_kerusakan',
-        'status' => 'Belum diproses',
+        'ditujukan_kepada',
+        'status',
+        'rejection_reason',
     ];
+    
+// Report.php
+public function reviews()
+{
+    return $this->hasMany(Review::class);
+}
+        
+
 }

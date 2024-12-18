@@ -7,9 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/duktek_form.css') }}">
-
 </head>
 <body>
+    <div class="container mt-3">
+        <button onclick="history.back()" class="btn btn-secondary">Kembali</button>
+    </div>
     <div class="container mt-5">
         <h2>Laporan Kerusakan</h2>
 
@@ -88,23 +90,32 @@
                             </form>
                         </div>
                     </div>
-                @elseif($report->status === 'accepted')
-                    <!-- Laporan diterima -->
-                    <div class="alert alert-success">
-                        Laporan ini telah <strong>diterima</strong>.
-                    </div>
-                @elseif($report->status === 'rejected')
-                    <!-- Laporan ditolak -->
-                    <div class="alert alert-danger">
-                        Laporan ini telah <strong>ditolak</strong>.
-                        <p><strong>Alasan Penolakan:</strong> {{ $report->rejection_reason }}</p>
-                    </div>
-                @endif
+                    @elseif($report->status === 'accepted')
+                        <!-- Tombol Selesai -->
+                        <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <form action="{{ route('report.complete', $report->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Selesai</button>
+                                </form>
+                            </div>
+                        </div>
+                    @elseif($report->status === 'completed')
+                        <div class="alert alert-info">
+                            Laporan ini telah <strong>diselesaikan</strong>.
+                        </div>
+                    @elseif($report->status === 'rejected')
+                        <!-- Laporan ditolak -->
+                        <div class="alert alert-danger">
+                            Laporan ini telah <strong>ditolak</strong>.
+                            <p><strong>Alasan Penolakan:</strong> {{ $report->rejection_reason }}</p>
+                        </div>
+                    @endif
+
+                </div>
             </div>
         @endforeach
     </div>
-
-                
 
     <script src="{{ asset('js/duktek_form.js') }}"></script>
 </body>
