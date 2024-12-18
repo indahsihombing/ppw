@@ -35,20 +35,14 @@
               Ulasan
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{ route('guides.index') }}">
+              <img src="img/panduan.png" alt="Panduan Icon" class="menu-icon">
+              Panduan
+            </a>
+          </li>
       </ul>
     </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <header class="header">
-        <div class="user-actions">
-          <img src="img/profile.png" alt="User Avatar" class="user-avatar">
-          <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="logout-btn">Keluar</button>
-        </form>
-        </div>
-      </header>
 
       <div class="dashboard">
         <h2 class="dashboard-title">Lacak Status Laporan</h2>

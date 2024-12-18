@@ -13,6 +13,8 @@ class AdminController extends Controller
     
     }
 
+    
+
     function maintenance(){
         // echo "Mahasiswa Page";
         // echo "<h1>". Auth::user()->name ."</h1>";

@@ -48,7 +48,7 @@
             <div class="step-card">
                 <div class="step-number">4</div>
                 <h3>Lacak Status</h3>
-                <p>Pilih opsi ini untuk melihat aktivitas laporan yang sudah anda kirimkan.</p>
+                <p>Pilih opsi "Lacak Status" untuk melihat aktivitas laporan yang sudah anda kirimkan.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">5</div>
@@ -69,45 +69,55 @@
         <!-- FAQ Item 1 -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleAnswer(this)">
-                <h3>Apa itu Program Kartu Prakerja?</h3>
+                <h3>Berapa lama waktu yang dibutuhkan untuk laporan saya diproses?</h3>
                 <span class="icon">−</span>
             </div>
             <div class="faq-answer">
-                <p>Program Kartu Prakerja adalah program beasiswa pelatihan untuk meningkatkan kompetensi kerja dan kewirausahaan. Program ini ditujukan bukan hanya untuk pencari kerja, tapi juga mereka yang sudah bekerja maupun buruh yang ingin mendapatkan peningkatan skill atau kompetensi, juga pekerja/buruh yang terkena pemutusan hubungan kerja, termasuk pelaku usaha mikro dan kecil.</p>
-                <button class="copy-link">Salin Link</button>
+                <p>Laporan Anda akan segera ditinjau oleh tim duktek/maintenance. Waktu pemrosesan bergantung pada tingkat urgensi dan jumlah laporan yang masuk, namun Anda dapat memantau status laporan melalui akun Anda.</p>
             </div>
         </div>
 
         <!-- FAQ Item 2 -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleAnswer(this)">
-                <h3>Apa saja ketentuan untuk menjadi penerima Kartu Prakerja?</h3>
+                <h3>Apa yang harus saya lakukan sebelum mengirim laporan?</h3>
                 <span class="icon">+</span>
             </div>
             <div class="faq-answer">
-                <p>Berikut adalah ketentuan untuk menjadi penerima Kartu Prakerja...</p>
+                <p>Anda bisa membaca artikel panduan penanganan pertama yang tersedia di website. Artikel ini membantu Anda mengatasi masalah sementara sebelum tim duktek/maintenance menangani kerusakan.</p>
             </div>
         </div>
 
         <!-- FAQ Item 3 -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleAnswer(this)">
-                <h3>Apa saja tahapan daftar Kartu Prakerja?</h3>
+                <h3>Bagaimana saya tahu laporan saya diterima atau ditolak?</h3>
                 <span class="icon">+</span>
             </div>
             <div class="faq-answer">
-                <p>Tahapan untuk mendaftar Kartu Prakerja adalah sebagai berikut...</p>
+                <p>Anda dapat memantaunya dibagian "Lacak Status" web Delcare. Jika laporan diterima, status akan berubah menjadi "Dalam Proses". Jika ditolak, alasan penolakan akan disertakan.</p>
             </div>
         </div>
 
         <!-- FAQ Item 4 -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleAnswer(this)">
-                <h3>Bagaimana cara masuk ke akun Prakerja?</h3>
+                <h3>Apa yang harus saya lakukan jika laporan saya ditolak?</h3>
                 <span class="icon">+</span>
             </div>
             <div class="faq-answer">
-                <p>Untuk masuk ke akun Prakerja, Anda perlu...</p>
+                <p>Jika laporan Anda ditolak, periksa alasan penolakan yang disertakan. Anda dapat memperbarui laporan dengan informasi tambahan atau menghubungi tim duktek/maintenance melalui kontak yang tersedia untuk klarifikasi lebih lanjut.</p>
+            </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h3>Apa yang terjadi setelah laporan saya diterima?</h3>
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Setelah laporan Anda diterima, statusnya akan berubah menjadi "Diterima". Tim duktek/maintenance akan segera menindaklanjuti kerusakan yang dilaporkan. Anda juga dapat memantau perkembangan penyelesaian melalui akun Anda.</p>
             </div>
         </div>
     </section>

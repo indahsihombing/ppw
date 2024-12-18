@@ -1,7 +1,7 @@
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -60,11 +60,16 @@ body {
   margin-right: 10px;
 }
 
+.dashboard {
+  padding: 20px;
+  margin-left: 250px; /* Adjust based on sidebar width */
+}
+
 .dashboard-title {
-  font-size: 30px; /* Increase the size as needed */
-  font-weight: bold;
-  color: #333;
-  margin: 20px 0;
+  text-align: center; /* Mengatur teks agar berada di tengah secara horizontal */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .main-content {
@@ -109,7 +114,7 @@ cursor: pointer;
 
 /* Tabel styling */
 .data-table {
-  width: 90%;
+  width: 100%;
   margin: 20px auto; /* Center table */
   border-collapse: collapse;
   font-size: 14px; /* Adjust font size */
@@ -117,11 +122,32 @@ cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.data-table th:nth-child(1), .data-table td:nth-child(1) {
+  width: 5%; /* Mengatur lebar kolom pertama */
+}
+
+.data-table th:nth-child(2), .data-table td:nth-child(2) {
+  width: 30%; /* Mengatur lebar kolom kedua */
+}
+
+.data-table th:nth-child(3), .data-table td:nth-child(3) {
+  width: 30%; /* Mengatur lebar kolom ketiga */
+}
+
+.data-table th:nth-child(4), .data-table td:nth-child(4) {
+  width: 20%; /* Mengatur lebar kolom keempat */
+}
+
+.data-table th:nth-child(5), .data-table td:nth-child(5) {
+  width: 15%; /* Mengatur lebar kolom kelima */
+}
+
 .data-table thead th {
-  background-color: #f4f7fc;
+  background-color: #007bff;
   text-align: left;
   padding: 12px 15px;
   font-weight: bold;
+  color: #fff;
   border-bottom: 2px solid #ddd;
 }
 

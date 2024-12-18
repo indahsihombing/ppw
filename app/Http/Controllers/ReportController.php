@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 use Illuminate\Http\Request;
 use App\Models\Report;
@@ -77,6 +79,186 @@ class ReportController extends Controller
         return response()->json([
             'success' => false,
             'message' => 'Terjadi kesalahan saat mengirim laporan.',
+            'error' => $e->getMessage()
+        ], 500); // HTTP 500 Internal Server Error
+    }
+}
+
+// hateoas
+    public function hateoasAPI(Request $request)
+{
+    // Validasi data request
+    $validated = $request->validate([
+        'nama_lengkap' => 'required|string|max:255',
+        'nomor_handphone' => 'required|string|max:20',
+        'program_studi' => 'required|string',
+        'lokasi_kerusakan' => 'required|string',
+        'deskripsi_kerusakan' => 'required|string',
+        'foto_kerusakan' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'ditujukan_kepada' => 'required|string',
+    ]);
+
+    try {
+        // Ambil data dari request
+        $data = $request->only([
+            'nama_lengkap', 'nomor_handphone', 'program_studi',
+            'lokasi_kerusakan', 'deskripsi_kerusakan', 'ditujukan_kepada'
+        ]);
+
+        // Jika ada file foto kerusakan
+        if ($request->hasFile('foto_kerusakan')) {
+            $imageName = time() . '.' . $request->foto_kerusakan->extension();
+            $request->foto_kerusakan->move(public_path('uploads'), $imageName);
+            $data['foto_kerusakan'] = $imageName;
+        }
+
+        // Simpan data ke database
+        $report = Report::create($data);
+
+        // Tambahkan HATEOAS links
+        $links = [
+            'self' => route('reports.show', ['id' => $report->id]),
+            'update' => route('reports.update', ['id' => $report->id]),
+            'delete' => route('reports.destroy', ['id' => $report->id]),
+            'all_reports' => route('api.report.get'),
+        ];
+
+        // Kembalikan respons JSON berhasil
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan berhasil dikirim!',
+            'data' => $report,
+            'links' => $links
+        ], 201); // HTTP 201 Created
+
+    } catch (\Exception $e) {
+        // Kembalikan respons JSON jika terjadi kesalahan
+        return response()->json([
+            'success' => false,
+            'message' => 'Terjadi kesalahan saat mengirim laporan.',
+            'error' => $e->getMessage()
+        ], 500); // HTTP 500 Internal Server Error
+    }
+}
+
+// hateoas 
+public function show($id)
+{
+    try {
+        // Cari laporan berdasarkan ID
+        $report = Report::findOrFail($id);
+
+        // Tambahkan HATEOAS links
+        $links = [
+            'self' => route('reports.show', ['id' => $report->id]),
+            'update' => route('reports.update', ['id' => $report->id]),
+            'delete' => route('reports.destroy', ['id' => $report->id]),
+            'all_reports' => route('reports.index'),
+        ];
+
+        // Kembalikan respons JSON
+        return response()->json([
+            'success' => true,
+            'data' => $report,
+            'links' => $links
+        ], 200); // HTTP 200 OK
+
+    } catch (ModelNotFoundException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Laporan tidak ditemukan.',
+        ], 404); // HTTP 404 Not Found
+    }
+}
+
+public function update(Request $request, $id)
+{
+    try {
+        // Cari laporan berdasarkan ID
+        $report = Report::findOrFail($id);
+
+        // Validasi data yang akan diperbarui
+        $validated = $request->validate([
+            'nama_lengkap' => 'sometimes|required|string|max:255',
+            'nomor_handphone' => 'sometimes|required|string|max:20',
+            'program_studi' => 'sometimes|required|string',
+            'lokasi_kerusakan' => 'sometimes|required|string',
+            'deskripsi_kerusakan' => 'sometimes|required|string',
+            'foto_kerusakan' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'ditujukan_kepada' => 'sometimes|required|string',
+        ]);
+
+        // Perbarui data laporan
+        $data = $request->only([
+            'nama_lengkap', 'nomor_handphone', 'program_studi',
+            'lokasi_kerusakan', 'deskripsi_kerusakan', 'ditujukan_kepada'
+        ]);
+
+        // Jika ada file foto kerusakan baru
+        if ($request->hasFile('foto_kerusakan')) {
+            $imageName = time() . '.' . $request->foto_kerusakan->extension();
+            $request->foto_kerusakan->move(public_path('uploads'), $imageName);
+            $data['foto_kerusakan'] = $imageName;
+
+            // Hapus foto lama jika ada
+            if ($report->foto_kerusakan) {
+                unlink(public_path('uploads/' . $report->foto_kerusakan));
+            }
+        }
+
+        $report->update($data);
+
+        // Kembalikan respons JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan berhasil diperbarui.',
+            'data' => $report
+        ], 200); // HTTP 200 OK
+
+    } catch (ModelNotFoundException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Laporan tidak ditemukan.',
+        ], 404); // HTTP 404 Not Found
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Terjadi kesalahan saat memperbarui laporan.',
+            'error' => $e->getMessage()
+        ], 500); // HTTP 500 Internal Server Error
+    }
+}
+public function destroy($id)
+{
+    try {
+        // Cari laporan berdasarkan ID
+        $report = Report::findOrFail($id);
+
+        // Hapus foto jika ada
+        if ($report->foto_kerusakan) {
+            unlink(public_path('uploads/' . $report->foto_kerusakan));
+        }
+
+        // Hapus laporan
+        $report->delete();
+
+        // Kembalikan respons JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan berhasil dihapus.',
+        ], 200); // HTTP 200 OK
+
+    } catch (ModelNotFoundException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Laporan tidak ditemukan.',
+        ], 404); // HTTP 404 Not Found
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Terjadi kesalahan saat menghapus laporan.',
             'error' => $e->getMessage()
         ], 500); // HTTP 500 Internal Server Error
     }

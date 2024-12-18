@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="stylesheet" href="css/guide/index.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="js/dashboard.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -57,34 +57,47 @@
         </div>
       </header>
 
-      <div class="dashboard">
-        <h2 class="dashboard-title">Dashboard</h2>
-        
 
-        <div class="stats">
-          <!-- Total Laporan Masuk -->
-          <div class="stat-card">
-            <div class="stat-info">
-              <h3>Total Laporan Masuk</h3>
-              <p class="stat-number">{{ $totalReports }}</p> <!-- Data dari controller -->
-            </div>
-          </div>
+<div class="dashboard">
+    <h2 class="dashboard-title">Panduan</h2>
 
-           <!-- Total Laporan Diterima -->
-  <div class="stat-card">
-    <div class="stat-info">
-      <h3>Total Laporan Diterima</h3>
-      <p class="stat-number">{{ $acceptedReports }}</p> <!-- Data dari controller -->
+    <div class="add-guide">
+        <a href="{{ route('guides.create') }}" class="btn btn-primary">Tambah Panduan</a>
     </div>
-  </div>
 
-  
-  <div class="stat-card">
-    <div class="stat-info">
-      <h3>Total Laporan Ditolak</h3>
-      <p class="stat-number">{{ $rejectedReports }}</p> <!-- Data dari controller -->
+    <div class="guide-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Judul</th>
+                    <th>Deskripsi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($guides as $index => $guide)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $guide->title }}</td>
+                    <td>{{ $guide->description }}</td>
+                    <td>
+                      <!-- Tombol Edit -->
+                      <a href="{{ route('guides.edit', $guide->id) }}" class="btn btn-warning">Edit</a>
+                      <!-- Tombol Hapus -->
+                        <form action="{{ route('guides.destroy', $guide->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="4">Belum ada panduan.</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-  </div>
-</div
-
-
+</div>

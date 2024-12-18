@@ -1,0 +1,21 @@
+.guide-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .guide-table th, .guide-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .guide-table th {
+    background-color: #f4f4f4;
+    font-weight: 700;
+  }
+  
+  .add-guide {
+    margin-bottom: 20px;
+  }
+  

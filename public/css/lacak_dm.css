@@ -1,4 +1,10 @@
 /* Table Styling */
+.title-text {
+    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 700; /* Mengatur ketebalan font */
+    font-size: 36px; /* Mengatur ukuran font */
+    color: #333; /* Mengatur warna teks */
+}
 table {
     font-family: 'Poppins', sans-serif;
     border-collapse: separate;
